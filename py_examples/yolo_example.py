@@ -5,6 +5,10 @@ from datetime import datetime
 from skimage.transform import resize
 
 def interpret_output(output, img_width, img_height):
+    """
+    Takes an output of an output
+
+    """
 	classes = ["aeroplane", "bicycle", "bird", "boat", "bottle", "bus", "car", "cat", "chair", "cow", "diningtable", "dog", "horse", "motorbike", "person", "pottedplant", "sheep", "sofa", "train","tvmonitor"]
 	w_img = img_width
 	h_img = img_height
@@ -66,6 +70,10 @@ def interpret_output(output, img_width, img_height):
 	return result
 
 def iou(box1,box2):
+    """
+    Computes the intersection of two boxes.
+
+    """
 	tb = min(box1[0]+0.5*box1[2],box2[0]+0.5*box2[2])-max(box1[0]-0.5*box1[2],box2[0]-0.5*box2[2])
 	lr = min(box1[1]+0.5*box1[3],box2[1]+0.5*box2[3])-max(box1[1]-0.5*box1[3],box2[1]-0.5*box2[3])
 	if tb < 0 or lr < 0 : intersection = 0
@@ -74,6 +82,10 @@ def iou(box1,box2):
 
 
 def show_results(img, results, img_width, img_height):
+    """
+    Show the results in the results of an image.
+
+    """
 	img_cp = img.copy()
 	disp_console = True
 	imshow = True
